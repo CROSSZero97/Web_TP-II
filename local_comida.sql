@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-04-2026 a las 18:16:39
+-- Tiempo de generación: 21-04-2026 a las 20:17:50
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -29,18 +29,19 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `comida` (
   `id` int(11) NOT NULL,
-  `comida` varchar(50) NOT NULL,
+  `nombre` varchar(50) NOT NULL,
   `precio` int(11) NOT NULL,
-  `locales` int(11) NOT NULL
+  `local` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `comida`
 --
 
-INSERT INTO `comida` (`id`, `comida`, `precio`, `locales`) VALUES
-(3, 'pizza', 14000, 1),
-(4, 'hamburgesa', 14000, 2);
+INSERT INTO `comida` (`id`, `nombre`, `precio`, `local`) VALUES
+(1, 'hamburgesa', 16000, 1),
+(2, 'pizza napolitana', 12300, 2),
+(3, 'pizza cuatro quesos', 14000, 1);
 
 -- --------------------------------------------------------
 
@@ -70,7 +71,7 @@ INSERT INTO `local` (`id`, `nombre`) VALUES
 --
 ALTER TABLE `comida`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `locales` (`locales`);
+  ADD KEY `local` (`local`);
 
 --
 -- Indices de la tabla `local`
@@ -86,7 +87,7 @@ ALTER TABLE `local`
 -- AUTO_INCREMENT de la tabla `comida`
 --
 ALTER TABLE `comida`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `local`
@@ -102,7 +103,7 @@ ALTER TABLE `local`
 -- Filtros para la tabla `comida`
 --
 ALTER TABLE `comida`
-  ADD CONSTRAINT `comida_ibfk_1` FOREIGN KEY (`locales`) REFERENCES `local` (`id`);
+  ADD CONSTRAINT `comida_ibfk_1` FOREIGN KEY (`local`) REFERENCES `local` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
